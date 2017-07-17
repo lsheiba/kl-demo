@@ -35,7 +35,7 @@ instances:
           VolumeType: gp2
   - name: gpu-ondemad
     # Instance count in the group.
-    count: -5
+    count: -1
     # Kubernetes node labels. Will be assigned to nodes (useful for nodeSelector). Type: dict
     labels:
       class: dynamic
