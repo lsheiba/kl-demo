@@ -1,0 +1,50 @@
+# Cluster name
+name: kl-demo
+# Amazon zone where cluster is deployed.
+zone: us-east-1a
+# Amazon region where cluster is deployed.
+region: us-east-1
+# Amazon master instance type, all available instance types see at https://aws.amazon.com/ec2/instance-types/
+master_type: m3.medium
+# Replication master in specified zones (will deploy multi-master kubernetes installation)
+master_count: 1
+# Amazon kubernetes master instance volume type, all avaliable volume types see at http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html
+master_disk_type: gp2
+# Master disk size in gigabytes.
+master_disk_size: 32
+# Amazon instance groups. Needed for spawning kubernetes nodes (aka minions aka slaves) in cluster.
+kubernetes_version: v1.6.6
+nfs_storage:
+  storage_type: nfs-server
+instances:
+    # Group name.
+  - name: demo
+    # Instance count in the group.
+    count: 2
+    # Kubernetes node labels. Will be assigned to nodes (useful for nodeSelector). Type: dict
+    labels:
+      type: demo
+    # Group instance type
+    instance_type: t2.xlarge
+    # Group volumes. Will be attached to each instance. Full spec see at http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html
+    # Spec for Ebs object see at http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html
+    volumes:
+      - Ebs:
+          DeleteOnTermination: true
+          VolumeSize: 32
+          VolumeType: gp2
+  - name: gpu-ondemad
+    # Instance count in the group.
+    count: -5
+    # Kubernetes node labels. Will be assigned to nodes (useful for nodeSelector). Type: dict
+    labels:
+      class: dynamic
+    # Group instance type
+    instance_type: g2.2xlarge
+    # Group volumes. Will be attached to each instance. Full spec see at http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_BlockDeviceMapping.html
+    # Spec for Ebs object see at http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_EbsBlockDevice.html
+    volumes:
+      - Ebs:
+          DeleteOnTermination: true
+          VolumeSize: 32
+          VolumeType: gp2
