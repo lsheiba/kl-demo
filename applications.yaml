@@ -1,17 +1,1 @@
-- charts:
-  - clusters:
-    - kl-demo
-    configuration:
-      values:
-        image: kuberlab/styles-transfer-ui:latest
-        resources:
-          requests:
-            cpu: 50m
-            memory: 64Mi
-        serviceType: ClusterIP
-        styles_mlapp: deep-styles
-        styles_model: deep-styles-build-3
-    name: styles-transfer-ui
-    src: https://github.com/kuberlab-catalog/styles-transfer-ui/
-    version: 1.0.0
-  name: styles-ui
+[]
