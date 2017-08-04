@@ -3,3 +3,8 @@
   Name: ls-demo
   Provider: amazon
   Src: kl-demo.yaml
+- Account: gpuhome
+  AutoDeploy: false
+  Name: local
+  Provider: kubernetes
+  Src: local.yaml
