@@ -1,5 +1,5 @@
 - Account: "788157744186"
   AutoDeploy: false
-  Name: kl-demo
+  Name: ls-demo
   Provider: amazon
   Src: kl-demo.yaml
