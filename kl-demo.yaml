@@ -1,5 +1,5 @@
 # Cluster name
-name: kl-demo
+name: ls-demo
 # Amazon zone where cluster is deployed.
 zone: us-east-1a
 # Amazon region where cluster is deployed.
